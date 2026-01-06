@@ -1,0 +1,179 @@
+---
+interface Stat {
+  icon: string;
+  label: string;
+  value: string;
+  colorClass: string;
+}
+
+const AVAILABLE_FOR_WORK = true;
+
+const STATS: Stat[] = [
+  {
+    icon: "speed",
+    label: "Performance Score",
+    value: "99/100 Core Web Vitals",
+    colorClass: "text-green-500 bg-green-500/20",
+  },
+  {
+    icon: "shopping_cart",
+    label: "Conversion Rate",
+    value: "+45% Aumento en Conversión",
+    colorClass: "text-blue-500 bg-blue-500/20",
+  },
+  {
+    icon: "api",
+    label: "Headless API",
+    value: "Menos 100ms Latencia",
+    colorClass: "text-purple-500 bg-purple-500/20",
+  },
+];
+---
+
+<section
+  class="relative pt-28 pb-0 lg:py-32 px-4 overflow-hidden"
+  aria-label="Introducción"
+>
+  <div
+    class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-[500px] bg-primary/20 blur-[120px] rounded-full pointer-events-none -z-10 will-change-transform"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div class="max-w-7xl mx-auto">
+    <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+      <div class="flex-1 text-center lg:text-left z-10">
+        {
+          AVAILABLE_FOR_WORK && (
+            <div
+              class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-wider mb-6"
+              role="status"
+            >
+              <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-primary" />
+              </span>
+              Disponible para nuevos proyectos
+            </div>
+          )
+        }
+
+        <h1
+          class="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tighter leading-[1.1] mb-6 text-gray-900 dark:text-white"
+        >
+          Desarrollando Experiencias de <br class="hidden sm:block" />
+          <span
+            class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-cyan-400"
+            >E-commerce</span
+          > Escalables
+        </h1>
+
+        <p
+          class="text-lg sm:text-xl text-gray-600 dark:text-text-secondary max-w-2xl mx-auto lg:mx-0 font-body leading-relaxed mb-8"
+        >
+          Ingeniero Senior Shopify & Full Stack. Especialista
+          <strong class="text-gray-900 dark:text-gray-100 font-semibold"
+            >tiendas personalizadas.</strong
+          > Transformo código complejo en experiencias de comercio que generan ventas.
+        </p>
+
+        <div
+          class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+        >
+          <a
+            class="inline-flex items-center justify-center h-12 px-8 rounded-lg bg-primary hover:bg-primary-dark text-white font-bold transition-all shadow-lg shadow-primary/25 focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+            href="#projects"
+          >
+            Ver Proyectos
+          </a>
+          <a
+            class="inline-flex items-center justify-center h-12 px-8 rounded-lg bg-white dark:bg-surface-dark border border-gray-200 dark:border-surface-dark-hover hover:bg-gray-50 dark:hover:bg-surface-dark-hover text-gray-900 dark:text-white font-bold transition-all focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-700"
+            href="https://api.whatsapp.com/send?phone=573128805228&text=%F0%9F%9A%80%20Hola%2C%20tengo%20interes%20en%20contactarte"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Contáctame
+          </a>
+        </div>
+      </div>
+
+      <div
+        class="flex-1 w-full max-w-[600px] relative perspective-1000"
+        aria-hidden="true"
+      >
+        <div
+          class="aspect-square relative rounded-2xl overflow-hidden bg-surface-dark border border-surface-dark-hover shadow-2xl group"
+        >
+          <div
+            class="absolute inset-0 p-6 font-mono text-xs text-text-secondary/20 overflow-hidden leading-relaxed select-none pointer-events-none"
+          >
+            <span class="text-primary/40">import</span> &#123; defer &#125; <span
+              class="text-primary/40">from</span
+            > '@shopify/remix-oxygen';<br />
+            <span class="text-primary/40">import</span> &#123; Analytics &#125; <span
+              class="text-primary/40">from</span
+            > '@shopify/hydrogen';<br /><br />
+
+            <span class="text-primary/40">export async function</span> loader(&#123;
+            context, params &#125;) &#123;<br />
+            &nbsp;&nbsp;<span class="text-purple-400/30">const</span> &#123; handle
+            &#125; = params;<br />
+            &nbsp;&nbsp;<span class="text-purple-400/30">const</span> data = <span
+              class="text-purple-400/30">await</span
+            > context.storefront.query(PRODUCT_QUERY, &#123;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;variables: &#123; handle &#125;,<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-green-400/30"
+              >// Enterprise Caching Strategy</span
+            ><br />
+            &nbsp;&nbsp;&nbsp;&nbsp;cache: context.storefront.CacheLong(),<br />
+            &nbsp;&nbsp;&#125;);<br /><br />
+
+            &nbsp;&nbsp;<span class="text-primary/40">if</span> (!data.product) <span
+              class="text-primary/40">throw</span
+            >
+            <span class="text-purple-400/30">new</span> Response('Not Found', &#123;
+            status: 404 &#125;);<br /><br />
+
+            &nbsp;&nbsp;<span class="text-primary/40">return</span> defer(&#123;<br
+            />
+            &nbsp;&nbsp;&nbsp;&nbsp;product: data.product,<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;analytics: &#123;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pageType: Analytics.PageType.Product,<br
+            />
+            &nbsp;&nbsp;&nbsp;&nbsp;&#125;<br />
+            &nbsp;&nbsp;&#125;);<br />
+            &#125;
+          </div>
+
+          <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 flex flex-col justify-center gap-6"
+          >
+            {
+              STATS.map((stat, index) => (
+                <div
+                  class:list={[
+                    "flex items-center gap-4 p-4 rounded-xl bg-background-dark/90 backdrop-blur-xl border border-white/10 shadow-xl transition-transform hover:scale-105 duration-300",
+                    // Lógica de posicionamiento "escalonado" simple usando clases condicionales o índices
+                    index === 0 ? "translate-y-4 translate-x-4 self-end" : "",
+                    index === 1 ? "-translate-x-4 self-start" : "",
+                    index === 2 ? "translate-x-8 self-center" : "",
+                  ]}
+                >
+                  <div
+                    class={`size-10 rounded-lg flex items-center justify-center ${stat.colorClass}`}
+                  >
+                    <span class="material-symbols-outlined">{stat.icon}</span>
+                  </div>
+                  <div>
+                    <div class="text-sm font-bold text-white">{stat.label}</div>
+                    <div class="text-xs text-text-secondary">{stat.value}</div>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

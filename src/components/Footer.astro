@@ -1,0 +1,103 @@
+---
+const currentYear = new Date().getFullYear();
+
+interface FooterLink {
+  name: string;
+  url: string;
+  label: string;
+}
+
+const SOCIAL_LINKS: FooterLink[] = [
+  {
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/in/andrey--vasquez/",
+    label: "Sígueme en LinkedIn",
+  },
+  {
+    name: "GitHub",
+    url: "https://github.com/andreyVasquez",
+    label: "Revisa mi código en GitHub",
+  },
+  {
+    name: "Email",
+    url: "mailto:william20026@gmail.com",
+    label: "Envíame un correo electrónico",
+  },
+  {
+    name: "Whatsapp",
+    url: "https://api.whatsapp.com/send?phone=573128805228&text=%F0%9F%9A%80%20Hola%2C%20tengo%20interes%20en%20contactarte",
+    label: "Envíame un mensaje por WhatsApp",
+  },
+];
+---
+
+<footer
+  class="bg-background-light dark:bg-background-dark border-t border-gray-200 dark:border-surface-dark-hover pt-20 pb-10 px-4 transition-colors duration-300"
+  id="contact"
+  aria-labelledby="footer-heading"
+>
+  <div class="max-w-4xl mx-auto text-center">
+    <h2
+      id="footer-heading"
+      class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 tracking-tight"
+    >
+      ¿Listo para escalar tu tienda?
+    </h2>
+    <p
+      class="text-lg text-gray-600 dark:text-text-secondary mb-10 max-w-2xl mx-auto leading-relaxed"
+    >
+      Actualmente tengo disponibilidad para proyectos freelance y consultoría.
+      Hablemos sobre cómo mejorar el rendimiento y la conversión de tu
+      e-commerce.
+    </p>
+
+    <a
+      href="https://api.whatsapp.com/send?phone=573128805228&text=%F0%9F%9A%80%20Hola%2C%20tengo%20interes%20en%20contactarte"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center justify-center h-14 px-10 rounded-full bg-primary hover:bg-primary-dark text-white text-lg font-bold transition-all shadow-lg shadow-primary/30 hover:shadow-primary/50 hover:-translate-y-1 mb-16 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+    >
+      Hablemos de tu Proyecto
+    </a>
+
+    <div
+      class="flex flex-col md:flex-row justify-between items-center pt-10 border-t border-gray-300 dark:border-surface-dark-hover gap-6 md:gap-0"
+    >
+      <div class="flex items-center gap-2">
+        <div
+          class="size-6 bg-primary rounded flex items-center justify-center text-white"
+          aria-hidden="true"
+        >
+          <span class="material-symbols-outlined text-[16px]">terminal</span>
+        </div>
+        <span class="text-sm font-bold text-gray-900 dark:text-white"
+          >Andrey Vasquez</span
+        >
+      </div>
+
+      <nav aria-label="Enlaces redes sociales pie de página">
+        <ul class="flex gap-6">
+          {
+            SOCIAL_LINKS.map((link) => (
+              <li>
+                <a
+                  class="text-gray-500 dark:text-text-secondary hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium"
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={link.label}
+                >
+                  {link.name}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <div class="text-sm text-gray-500 dark:text-gray-600">
+        &copy; {currentYear} Andrey Vasquez. Todos los derechos reservados.
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,105 @@
+---
+interface Feature {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+const FEATURES: Feature[] = [
+  {
+    icon: "diamond",
+    title: "Experto en Shopify",
+    description:
+      "Dominio profundo de Liquid, Checkout Extensions y la Admin API para crear soluciones nativas complejas.",
+  },
+  {
+    icon: "layers",
+    title: "Ingeniería Full Stack",
+    description:
+      "Desarrollo de middleware robusto en Node.js e interfaces de usuario dinámicas basadas en React.",
+  },
+  {
+    icon: "rocket_launch",
+    title: "Performance & SEO",
+    description:
+      "Obsesión por los Core Web Vitals, estrategias de caché avanzadas y la reducción drástica de tiempos de carga.",
+  },
+  {
+    icon: "settings_suggest",
+    title: "Automatización",
+    description:
+      "Optimización de operaciones mediante scripts personalizados y flujos de integración continua (CI/CD).",
+  },
+];
+---
+
+<section
+  class="pt-20 pb-0 lg:pb-20 px-4 bg-background-light dark:bg-background-dark transition-colors duration-300"
+  id="about"
+  aria-labelledby="about-title"
+>
+  <div class="max-w-5xl mx-auto">
+    <div class="flex flex-col md:flex-row gap-12 items-center">
+      <div class="flex-1">
+        <h2
+          id="about-title"
+          class="text-3xl font-bold mb-6 text-gray-900 dark:text-white leading-tight"
+        >
+          Más que un desarrollador,<br />
+          <span class="text-primary">un arquitecto de comercio digital.</span>
+        </h2>
+
+        <div
+          class="space-y-6 text-gray-600 dark:text-text-secondary font-body leading-relaxed"
+        >
+          <p>
+            Con más de 4 años de experiencia enfocada en el sector e-commerce,
+            no me limito a escribir código; <strong
+              class="text-gray-900 dark:text-gray-100 font-semibold"
+              >construyo sistemas diseñados para vender</strong
+            >. Entiendo perfectamente que, en este negocio, cada milisegundo de
+            latencia cuesta dinero.
+          </p>
+          <p>
+            Mi enfoque fusiona la lógica robusta del backend con interfaces
+            fluidas de alta conversión. Ya sea migrando una tienda heredada a
+            <strong class="text-gray-900 dark:text-gray-100 font-semibold"
+              >Shopify Plus</strong
+            > o diseñando una arquitectura headless con
+            <strong class="text-gray-900 dark:text-gray-100 font-semibold"
+              >Hydrogen</strong
+            >, mi prioridad siempre es la escalabilidad y el retorno de
+            inversión.
+          </p>
+        </div>
+      </div>
+
+      <div class="flex-1 w-full">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {
+            FEATURES.map((feature) => (
+              <article class="group p-6 rounded-xl bg-white dark:bg-surface-dark border border-gray-200 dark:border-surface-dark-hover hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-1">
+                <div class="size-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-white transition-colors duration-300 text-primary">
+                  <span
+                    class="material-symbols-outlined text-2xl"
+                    aria-hidden="true"
+                  >
+                    {feature.icon}
+                  </span>
+                </div>
+
+                <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">
+                  {feature.title}
+                </h3>
+
+                <p class="text-sm text-gray-600 dark:text-text-secondary leading-relaxed">
+                  {feature.description}
+                </p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

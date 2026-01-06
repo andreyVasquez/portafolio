@@ -1,0 +1,91 @@
+---
+import { Image } from "astro:assets";
+import ImgJuan from "../assets/juan-manuel.webp";
+import ImgCrhistian from "../assets/crhistian-david.webp";
+
+interface Testimonial {
+  author: string;
+  role: string;
+  text: string;
+  image: ImageMetadata;
+}
+
+const TESTIMONIALS: Testimonial[] = [
+  {
+    author: "Juan Manuel Becerra Hernandez",
+    role: "Shopify Developer",
+    text: "Andrey es un desarrollador extremadamente eficiente, con una habilidad notable para resolver problemas lógicos en Shopify. Encuentra soluciones claras ante los desafíos más complejos y aporta un gran valor técnico y humano al equipo.",
+    image: ImgJuan,
+  },
+  {
+    author: "Crhistian David Vergara Gomez",
+    role: "FullStack Developer",
+    text: "Andrey es un profesional excepcionalmente recursivo y adaptable. Su dominio de tecnologías clave como TypeScript, ReactJS y MongoDB, sumado a su capacidad para crear soluciones escalables, lo convierten en un activo inestimable.",
+    image: ImgCrhistian,
+  },
+];
+---
+
+<section
+  class="py-20 px-4 bg-white dark:bg-background-dark transition-colors duration-300"
+  aria-labelledby="testimonials-title"
+>
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-12">
+      <span class="inline-block p-2 rounded-lg bg-primary/10 text-primary mb-4">
+        <span class="material-symbols-outlined text-2xl">thumb_up</span>
+      </span>
+      <h2
+        id="testimonials-title"
+        class="text-3xl font-bold text-gray-900 dark:text-white"
+      >
+        Recomendaciones
+      </h2>
+      <p class="text-gray-600 dark:text-text-secondary mt-2">
+        Lo que dicen mis colegas y compañeros de equipo.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {
+        TESTIMONIALS.map((testimonial) => (
+          <figure class="flex flex-col p-8 rounded-2xl bg-gray-50 dark:bg-surface-dark border border-gray-100 dark:border-surface-dark-hover relative hover:shadow-lg transition-shadow duration-300">
+            <span
+              class="material-symbols-outlined absolute top-6 left-6 text-5xl text-primary/10 select-none"
+              aria-hidden="true"
+            >
+              format_quote
+            </span>
+
+            <blockquote class="relative z-10 flex-1">
+              <p class="text-gray-700 dark:text-gray-300 font-body italic leading-relaxed text-md">
+                "{testimonial.text}"
+              </p>
+            </blockquote>
+
+            <figcaption class="flex items-center gap-4 mt-6 border-t border-gray-200 dark:border-gray-700/50 pt-6">
+              <div class="relative">
+                <Image
+                  src={testimonial.image}
+                  alt={`Foto de perfil de ${testimonial.author}`}
+                  class="size-12 rounded-full object-cover border-2 border-white dark:border-gray-600 shadow-sm"
+                  width={48}
+                  height={48}
+                />
+              </div>
+
+              <div>
+                <div class="font-bold text-gray-900 dark:text-white text-sm">
+                  {testimonial.author}
+                </div>
+                <div class="text-xs font-medium text-primary dark:text-text-secondary">
+                  {testimonial.role}
+                </div>
+              </div>
+            </figcaption>
+          </figure>
+        ))
+      }
+    </div>
+  </div>
+</section>

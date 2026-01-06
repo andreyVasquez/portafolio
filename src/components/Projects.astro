@@ -1,0 +1,135 @@
+---
+import { Image } from "astro:assets";
+import ImgProject1 from "../assets/project-1.webp";
+import ImgProject2 from "../assets/project-2.webp";
+import ImgProject3 from "../assets/project-3.webp";
+
+interface Project {
+  title: string;
+  description: string;
+  image: ImageMetadata;
+  alt: string;
+  url: string;
+  tags: string[];
+}
+
+const PROJECTS: Project[] = [
+  {
+    title: "Smart Cart Sync & Real-Time Inventory",
+    description:
+      "Arquitectura de sincronización omnicanal del carrito que valida el inventario en tiempo real. Solucioné conflictos de inconsistencia de datos (Langshop) y persistencia de stock entre sesiones.",
+    image: ImgProject1,
+    alt: "Captura de pantalla de tienda de moda con grid de modelos mostrando la sincronización de carrito",
+    url: "https://www.driftparadiz.fr/en-en",
+    tags: ["Cart API", "GraphQL", "Liquid", "Node JS"],
+  },
+  {
+    title: "Dynamic Cross-Selling Engine",
+    description:
+      "Sistema avanzado de Bundles integrado en la PDP. Utiliza la API de Recomendaciones y Metafields para gestionar variantes, impuestos dinámicos y precios en tiempo real para maximizar el AOV.",
+    image: ImgProject2,
+    alt: "Panel de control de aplicación Shopify personalizada para gestión de inventario y cross-selling",
+    url: "https://www.centralefillers.com/en/products/ibsa-profhilo-1x2ml",
+    tags: ["Shopify APIs", "Conversion Rate", "Metafields"],
+  },
+  {
+    title: "High-Performance Financial Dashboard",
+    description:
+      "App de visualización de datos financieros con Next.js. Implementación de caché agresiva y seguridad empresarial para renderizar métricas críticas y gráficos interactivos con latencia mínima.",
+    image: ImgProject3,
+    alt: "Interfaz minimalista de dashboard financiero con filtros avanzados y visualización de datos",
+    url: "https://app.cobranzaactiva.com/",
+    tags: ["Next.js", "Database", "Vercel", "API"],
+  },
+];
+---
+
+<section
+  class="pt-20 pb-0 lg:pb-20 px-4 bg-background-light dark:bg-background-dark transition-colors duration-300"
+  id="projects"
+  aria-label="Proyectos Destacados"
+>
+  <div class="max-w-7xl mx-auto">
+    <div
+      class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6"
+    >
+      <div>
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+          Proyectos Destacados
+        </h2>
+        <p class="text-gray-600 dark:text-text-secondary max-w-xl">
+          Una selección de desafíos técnicos y soluciones de e-commerce de alto
+          rendimiento.
+        </p>
+      </div>
+
+      <a
+        class="text-primary hover:text-primary-dark font-bold text-sm flex items-center gap-1 group focus:outline-none focus:underline"
+        href="https://www.linkedin.com/in/andrey--vasquez/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Ver todos los proyectos en LinkedIn"
+      >
+        Ver Todos los Proyectos
+        <span
+          class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform"
+          aria-hidden="true">arrow_forward</span
+        >
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {
+        PROJECTS.map((project) => (
+          <article class="flex flex-col bg-white dark:bg-surface-dark rounded-xl overflow-hidden border border-gray-200 dark:border-surface-dark-hover hover:border-primary/50 dark:hover:border-primary/50 hover:shadow-lg transition-all duration-300 group h-full">
+            <div class="relative w-full aspect-video overflow-hidden bg-gray-100 dark:bg-gray-800">
+              <Image
+                src={project.image}
+                alt={project.alt}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 will-change-transform"
+                width={600}
+                height={338}
+                loading="lazy"
+              />
+
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm focus:outline-none"
+                aria-label={`Ver detalles del proyecto: ${project.title}`}
+              >
+                <span class="px-5 py-2.5 bg-white text-black text-sm font-bold rounded-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 shadow-xl">
+                  Ver Proyecto
+                </span>
+              </a>
+            </div>
+
+            <div class="p-6 flex flex-col flex-1">
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 leading-tight">
+                {project.title}
+              </h3>
+
+              <p class="text-gray-600 dark:text-text-secondary text-sm mb-6 leading-relaxed line-clamp-4">
+                {project.description}
+              </p>
+
+              <div class="mt-auto flex flex-wrap gap-2">
+                {project.tags.map((tag) => (
+                  <span
+                    class="text-xs font-mono font-medium px-2.5 py-1 rounded-md 
+                  bg-gray-100 dark:bg-background-dark 
+                  text-gray-600 dark:text-text-secondary 
+                  border border-gray-200 dark:border-surface-dark-hover"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

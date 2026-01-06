@@ -1,0 +1,93 @@
+---
+interface SkillCategory {
+  title: string;
+  icon: string;
+  skills: string[];
+}
+
+const SKILL_CATEGORIES: SkillCategory[] = [
+  {
+    title: "Ecosistema Shopify",
+    icon: "shopping_bag",
+    skills: [
+      "Liquid",
+      "Checkout Extensions",
+      "Hydrogen / Oxygen",
+      "Shopify CLI",
+      "Metafields & Metaobjects",
+    ],
+  },
+  {
+    title: "Full Stack Moderno",
+    icon: "code",
+    skills: [
+      "React.js",
+      "Next.js",
+      "Node.js",
+      "Tailwind CSS",
+      "GraphQL",
+      "PostgreSQL",
+      "Astro",
+      "TypeScript",
+    ],
+  },
+  {
+    title: "Herramientas & DevOps",
+    icon: "build",
+    skills: ["Git / GitHub", "Figma", "Google Analytics 4", "Vercel"],
+  },
+];
+---
+
+<section
+  class="pt-20 pb-0 lg:pb-20 px-4 bg-background-light dark:bg-background-dark transition-colors duration-300"
+  id="skills"
+>
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+        Stack Tecnológico
+      </h2>
+      <p class="text-gray-600 dark:text-text-secondary max-w-2xl mx-auto">
+        Las herramientas y tecnologías que utilizo para construir tiendas de
+        clase mundial, priorizando siempre la escalabilidad y el rendimiento.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {
+        SKILL_CATEGORIES.map((category) => (
+          <article class="flex flex-col gap-4 p-4 rounded-2xl hover:bg-gray-50 dark:hover:bg-surface-dark/50 transition-colors duration-300">
+            <div class="flex items-center gap-3 mb-2 px-2">
+              <div class="flex items-center justify-center size-10 rounded-lg bg-primary/10 text-primary">
+                <span class="material-symbols-outlined" aria-hidden="true">
+                  {category.icon}
+                </span>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white">
+                {category.title}
+              </h3>
+            </div>
+
+            <div class="flex flex-wrap gap-2">
+              {category.skills.map((skill) => (
+                <span
+                  class="px-3 py-1.5 rounded-full text-sm font-medium 
+                bg-white dark:bg-surface-dark 
+                text-gray-700 dark:text-gray-200 
+                border border-gray-200 dark:border-surface-dark-hover 
+                hover:border-primary/50 dark:hover:border-primary/50 
+                hover:text-primary dark:hover:text-primary
+                hover:shadow-sm
+                transition-all duration-200 cursor-default select-none"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
