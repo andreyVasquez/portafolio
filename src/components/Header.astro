@@ -20,6 +20,11 @@ const NAV_ITEMS: NavItem[] = [
     url: "#projects",
     label: "Ver mis proyectos destacados",
   },
+  {
+    name: "Recomendaciones",
+    url: "#recommendations",
+    label: "Ver mis recomendaciones",
+  },
 ];
 
 const SOCIAL_LINKS: SocialItem[] = [
@@ -68,7 +73,7 @@ const SOCIAL_LINKS: SocialItem[] = [
         </div>
       </a>
 
-      <div class="hidden md:flex items-center gap-8">
+      <div class="hidden lg:flex items-center gap-8">
         <nav aria-label="Navegación principal">
           <ul class="flex gap-6">
             {
@@ -132,7 +137,7 @@ const SOCIAL_LINKS: SocialItem[] = [
         </div>
       </div>
 
-      <div class="md:hidden flex items-center gap-1 md:gap-4">
+      <div class="lg:hidden flex items-center gap-1 md:gap-4">
         <button
           id="theme-toggle-mobile"
           class="flex items-center justify-center size-9 rounded-lg bg-gray-200 dark:bg-surface-dark text-gray-700 dark:text-white focus:outline-none"
@@ -159,7 +164,7 @@ const SOCIAL_LINKS: SocialItem[] = [
 
   <div
     id="mobile-menu"
-    class="hidden md:hidden absolute top-16 left-0 w-full bg-white dark:bg-background-dark border-b border-gray-200 dark:border-gray-800 shadow-lg"
+    class="hidden lg:hidden absolute top-16 left-0 w-full bg-white dark:bg-background-dark border-b border-gray-200 dark:border-gray-800 shadow-lg"
   >
     <nav class="flex flex-col p-4 gap-4">
       {
